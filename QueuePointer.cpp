@@ -34,7 +34,7 @@ class QueueList {
         }
 
         void dequeue() { 
-            struct QueueNode* temp; 
+            QueueNode* temp = new QueueNode(); 
             if(front==NULL) { 
                 cout<<"Queue is underflow."<<endl;
             } else { 
@@ -49,7 +49,8 @@ class QueueList {
             if(front==NULL) { 
                 cout<<"Queue is empty."<<endl;
             } else { 
-                struct QueueNode*temp=front; 
+                QueueNode *temp = new QueueNode();
+                temp = front; 
                 cout<<"Elements in the queue : ";
                 while(temp->next!=NULL) { 
                     cout<<temp->data<<" "; 
@@ -61,7 +62,7 @@ class QueueList {
         }
 
         void size() { 
-            struct QueueNode* temp;
+            QueueNode* temp = new QueueNode();;
             int t=0;
             if(front==NULL){
                 cout<<"Queue size : 0"<<endl;
