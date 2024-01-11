@@ -7,43 +7,63 @@ using namespace std;
 
 int HashTable[SIZE];
 int hash_function(int x) {
-    return x % SIZE;
+	return x % SIZE;
 }
 void insertEle(int x) {
-    int index = hash_function(x);
-    while (HashTable[index] != -1) {
-        index = (index + 1) % SIZE;
-    }
-    HashTable[index] = x;
-    cout << "Successfully inserted." << endl;
+	int i,index,start;
+	i=1;
+	index=hash_function(x);
+	start=index;
+	while(HashTable[index]!=-1){
+		if(HashTable[index]==-1) break;
+		index=(start+i*i)%SIZE;
+		i++;
+		if(index==start){
+			cout<<"Hash table is full."<<endl;
+			return;
+		}
+	}
+	HashTable[index]=x;
+	cout<<"Successfully inserted."<<endl;
 }
 void deleteEle(int x) {
-    int index = hash_function(x);
-    while (HashTable[index] != x && HashTable[index] != -1) {
-        index = (index + 1) % SIZE;
-    }
-    if (HashTable[index] == x) {
-        HashTable[index] = -1; 
-        cout << "Successfully deleted." << endl;
-    } else {
-        cout << "Element not found. So cannot delete the element." << endl;
-    }
+	int i,index,start;
+	i=1;
+	index=hash_function(x);
+	start=index;
+	while(HashTable[index]!=x){
+		if(HashTable[index]==x) break;
+		index=(start+i*i)%SIZE;
+		i++;
+		if(index==start) {
+			cout<<"Element not found. So cannot delete the element."<<endl;
+			return;
+		}
+	}
+	HashTable[index]=-1;
+	cout<<"Successfully deleted."<<endl;
 }
 void searchEle(int x) {
-    int index = hash_function(x);
-    while (HashTable[index] != x && HashTable[index] != -1) {
-        index = (index + 1) % SIZE;
-    }
-    if (HashTable[index] == x) {
-        cout << "Element found."<< endl;
-    } else {
-        cout << "Element not found." << endl;
-    }
+	int i,index,start;
+	i=1;
+	index=hash_function(x);
+	start=index;
+	while(HashTable[index]!=x){
+		if(HashTable[index]==x) break;
+		index=(start+i*i)%SIZE;
+		i++;
+		if(index==start){
+			cout<<"Element not found."<<endl;
+			return;
+		}
+	}
+	cout<<"Element found."<<endl;
 }
 void print() {
-    for (int i = 0; i < SIZE; ++i) {
-        cout << "[" << i << "]=>" << HashTable[i] << endl;
-    }
+	for(int i=0;i<SIZE;i++){
+		cout<<"["<<i<<"]=>"<<HashTable[i];
+		cout<<endl;
+	}
 }
 
 int main() {
