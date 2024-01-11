@@ -2,6 +2,7 @@
 #include <vector>
 #include <queue>
 using namespace std;
+
 class Graph {
     int vertices;
     vector<vector<int>> adjList;
@@ -12,6 +13,7 @@ public:
     }
     void BFS(int startVertex);
 };
+
 void Graph::BFS(int startVertex) {
     vector<bool> visited(vertices, false);
     queue<int> q;
@@ -31,6 +33,7 @@ void Graph::BFS(int startVertex) {
     }
     cout << endl;
 }
+
 int main() {
     int vertices, edges;
     cout << "Enter the number of vertices: ";
