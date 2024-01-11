@@ -4,7 +4,7 @@
 using namespace std;
 
 #define SIZE 13
-#define EXIT_OPTION 5
+
 
 int HashTable[SIZE];
 
@@ -90,7 +90,7 @@ int main() {
             case 4:
                 print();
                 break;
-            case EXIT_OPTION:
+            case 5:
                 exit(0);
             default:
                 cout << "Invalid option. Please try again." << endl;
