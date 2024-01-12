@@ -3,12 +3,16 @@
 #include<vector>
 #include<algorithm>
 #include<unordered_set>
+
 using namespace std;
+
 unordered_set<int>visited;
-void addEdge(vector<vector<int>>&adjacencyList,int src,int dest)
+
+void addEdge(vector<vector<int>>&adjList,int src,int dest)
 {
-	adjacencyList[src-1].push_back(dest-1);
+	adjList[src-1].push_back(dest-1);
 }
+
 void DFS(vector<vector<int>>&List1,int vertices,int cur)
 {
 	for(auto i:List1[cur]){
@@ -19,6 +23,7 @@ void DFS(vector<vector<int>>&List1,int vertices,int cur)
 		DFS(List1,vertices,i);
 	}
 }
+
 int main()
 {
 	int numvertices,numedges;
@@ -26,21 +31,21 @@ int main()
 	cin>>numvertices;
 	cout<<"Enter the number of edges: ";
 	cin>>numedges;
-	vector<vector<int>>adjacencyList(numvertices);
+	vector<vector<int>>adjList(numvertices);
 	for(int i=0;i<numedges;++i){
 		int src,dst;
 		cout<<"Enter source: ";
 		cin>>src;
 		cout<<"Enter destination: ";
 		cin>>dst;
-		addEdge(adjacencyList,src,dst);
+		addEdge(adjList,src,dst);
 	}
 	int startVertex;
 	cout<<"Enter start vertex for DFS: ";
 	cin>>startVertex;
 	visited.insert(startVertex-1);
 	cout<<"DFS of graph: "<<startVertex<<"\t";
-	DFS(adjacencyList,numvertices,startVertex-1);
+	DFS(adjList,numvertices,startVertex-1);
 	cout<<endl;
 	return 0;
 }
